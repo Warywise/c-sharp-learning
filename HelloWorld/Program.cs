@@ -21,3 +21,24 @@ firstName = "Bob";
 // var lastName; // erro
 var lastName = "Smith";
 Console.WriteLine(firstName + " " + lastName);
+
+// usando escape de caracteres
+string directory = "C:\\Users\\Public\\Documents";
+string directoryExplain = "O documento se encontra no seguinte diretório:\n Directory:\t C:\\Users\\Public\\Documents";
+Console.WriteLine(directory);
+Console.WriteLine(directoryExplain);
+Console.WriteLine();
+// ou com verbatim string (cadeia de caracteres textual) - @string
+directory = @"C:\Users\Public\Documents";
+Console.WriteLine(directory);
+// interpolação de cadeia de caracteres - $string
+directoryExplain = $"O documento se encontra no seguinte diretório:\n Directory:\t \"{directory}\"";
+Console.WriteLine(directoryExplain);
+Console.WriteLine();
+// combinando interpolação com verbatim string - $@string
+int numberOfDocs = 3;
+directoryExplain = $@"Os documentos se encontram no seguinte diretório:
+Directory:           {directory}
+Qnt:                 {numberOfDocs}";
+
+Console.WriteLine(directoryExplain);
