@@ -92,3 +92,5 @@ Console.WriteLine($"x = {x}, y = {y}");
 x = 5;
 y = ++x; // y = 6, x = 6
 Console.WriteLine($"x = {x}, y = {y}");
+
+Math.Max(5, 10);  // returns 10
