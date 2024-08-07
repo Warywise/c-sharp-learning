@@ -94,3 +94,51 @@ y = ++x; // y = 6, x = 6
 Console.WriteLine($"x = {x}, y = {y}");
 
 Math.Max(5, 10);  // returns 10
+
+// declarar matrizes (array)
+// é necessário declarar o tipo de dado e o tamanho da matriz na inicialização
+string[] names = new string[3];
+names[0] = "Bob";
+names[1] = "Joe";
+// names[3] = "Ana"; // erro, pois o índice 3 não existe
+Console.WriteLine($"Primeiro nome: {names[0]}");
+Console.WriteLine($"Segundo nome: {names[1]}");
+// Console.WriteLine($"Terceiro nome: {names[2]}"); // erro, pois o índice 2 não foi inicializado
+Console.WriteLine(names);
+
+Console.WriteLine();
+
+// iteirando sobre uma matriz
+int[] singleNumbers = [1, 2, 3, 4, 5];
+foreach (int singleNumber in singleNumbers)
+{
+  Console.WriteLine(singleNumber);
+}
+
+string[] cars = new string[3];
+cars[0] = "Volvo";
+cars[2] = "BMW";
+foreach (string car in cars)
+{
+  Console.WriteLine(car);
+}
+
+int[] inventory = [200, 450, 700, 175, 250];
+int totalItems = 0;
+foreach (int items in inventory)
+{
+    totalItems += items;
+    Console.WriteLine($"Items: {items}, Total: {totalItems}");
+}
+
+Console.WriteLine($"We have {totalItems} items in inventory.");
+
+string[] orderIDs = ["B123", "C234", "A345", "C15", "B177", "G3003", "C235", "B179"];
+
+foreach (string orderID in orderIDs)
+{
+    if (orderID.StartsWith('B'))
+    {
+        Console.WriteLine($"Order ID: {orderID}");
+    }
+}
