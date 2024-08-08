@@ -45,7 +45,30 @@ decimal jeongScore = jeongSum / currentAssignments;
 Console.WriteLine();
 Console.WriteLine("Student Scores:");
 
-Console.WriteLine("Sophia:\t\t" + sophiaScore + "\tA");
+// TODO: encontrar maneira de fazer isso para todos os estudantes sem repetir código
+string sophiaGrade;
+if (sophiaScore >= 90)
+{
+  sophiaGrade = "A";
+}
+else if (sophiaScore >= 80)
+{
+  sophiaGrade = "B";
+}
+else if (sophiaScore >= 70)
+{
+  sophiaGrade = "C";
+}
+else if (sophiaScore >= 60)
+{
+  sophiaGrade = "D";
+}
+else
+{
+  sophiaGrade = "F";
+}
+
+Console.WriteLine($"Sophia:\t\t{sophiaScore}\t{sophiaGrade}");
 Console.WriteLine("Nicolas:\t" + nicolasScore + "\tB");
 Console.WriteLine("Zahirah:\t" + zahirahScore + "\tB");
 Console.WriteLine("Jeong:\t\t" + jeongScore + "\tA");
@@ -92,10 +115,10 @@ totalGradePoints += course3Credit * course3Grade;
 totalGradePoints += course4Credit * course4Grade;
 totalGradePoints += course5Credit * course5Grade;
 
-decimal gradePointAverage = (decimal) totalGradePoints/totalCreditHours;
-int leadingDigit = (int) gradePointAverage;
-int firstDigit = (int) (gradePointAverage * 10) % 10;
-int secondDigit = (int) (gradePointAverage * 100 ) % 10;
+decimal gradePointAverage = (decimal)totalGradePoints / totalCreditHours;
+int leadingDigit = (int)gradePointAverage;
+int firstDigit = (int)(gradePointAverage * 10) % 10;
+int secondDigit = (int)(gradePointAverage * 100) % 10;
 
 Console.WriteLine($"Student: {studentName}\n");
 Console.WriteLine("Course\t\t\t\tCredit\tCredit Hours");
