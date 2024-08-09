@@ -14,19 +14,19 @@ This C# console application is designed to:
     Student         Grade
 
     Sophia:         92.2    A-
-    Andrew:         89.6    B+
-    Emma:           85.6    B
-    Logan:          91.2    A-
+    Nicolas:        89.6    B+
+    Zahirah:        85.6    B
+    Jeong:          91.2    A-
 */
 
 int examAssignments = 5;
 
-string[] studentNames = new string[] { "Sophia", "Andrew", "Emma", "Logan" };
+string[] studentNames = new string[] { "Sophia", "Nicolas", "Zahirah", "Jeong" };
 
 int[] sophiaScores = new int[] { 90, 86, 87, 98, 100, 94, 90 };
-int[] andrewScores = new int[] { 92, 89, 81, 96, 90, 89 };
-int[] emmaScores = new int[] { 90, 85, 87, 98, 68, 89, 89, 89 };
-int[] loganScores = new int[] { 90, 95, 87, 88, 96, 96 };
+int[] nicolasScores = new int[] { 92, 89, 81, 96, 90, 89 };
+int[] zahirahScores = new int[] { 90, 85, 87, 98, 68, 89, 89, 89 };
+int[] jeongScores = new int[] { 90, 95, 87, 88, 96, 96 };
 
 int[] studentScores = new int[10];
 
@@ -44,21 +44,34 @@ The outer foreach loop is used to:
 - calculate numeric and letter grade
 - write the score report information
 */
-foreach (string name in studentNames)
+foreach (string currentStudent in studentNames)
 {
-  string currentStudent = name;
+  // if (currentStudent == "Sophia")
+  //   studentScores = sophiaScores;
 
-  if (currentStudent == "Sophia")
-    studentScores = sophiaScores;
+  // else if (currentStudent == "Nicolas")
+  //   studentScores = nicolasScores;
 
-  else if (currentStudent == "Andrew")
-    studentScores = andrewScores;
+  // else if (currentStudent == "Zahirah")
+  //   studentScores = zahirahScores;
 
-  else if (currentStudent == "Emma")
-    studentScores = emmaScores;
-
-  else if (currentStudent == "Logan")
-    studentScores = loganScores;
+  // else if (currentStudent == "Jeong")
+  //   studentScores = jeongScores;
+  switch (currentStudent)
+  {
+    case "Sophia":
+      studentScores = sophiaScores;
+      break;
+    case "Nicolas":
+      studentScores = nicolasScores;
+      break;
+    case "Zahirah":
+      studentScores = zahirahScores;
+      break;
+    case "Jeong":
+      studentScores = jeongScores;
+      break;
+  }
 
   int sumAssignmentScores = 0;
   decimal currentStudentGrade = 0;
