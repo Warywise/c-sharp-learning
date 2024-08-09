@@ -45,30 +45,36 @@ decimal jeongScore = jeongSum / currentAssignments;
 Console.WriteLine();
 Console.WriteLine("Student Scores:");
 
-// TODO: encontrar maneira de fazer isso para todos os estudantes sem repetir código
-string sophiaGrade;
-if (sophiaScore >= 90)
-{
-  sophiaGrade = "A";
-}
-else if (sophiaScore >= 80)
-{
-  sophiaGrade = "B";
-}
-else if (sophiaScore >= 70)
-{
-  sophiaGrade = "C";
-}
-else if (sophiaScore >= 60)
-{
-  sophiaGrade = "D";
-}
-else
-{
-  sophiaGrade = "F";
-}
+string sophiaGrade = GetStudentGrade(sophiaScore);
+string nicolasGrade = GetStudentGrade(nicolasScore);
+string zahirahGrade = GetStudentGrade(zahirahScore);
+string jeongGrade = GetStudentGrade(jeongScore);
 
 Console.WriteLine($"Sophia:\t\t{sophiaScore}\t{sophiaGrade}");
-Console.WriteLine("Nicolas:\t" + nicolasScore + "\tB");
-Console.WriteLine("Zahirah:\t" + zahirahScore + "\tB");
-Console.WriteLine("Jeong:\t\t" + jeongScore + "\tA");
+Console.WriteLine($"Nicolas:\t{nicolasScore}\t{nicolasGrade}");
+Console.WriteLine($"Zahirah:\t{zahirahScore}\t{zahirahGrade}");
+Console.WriteLine($"Jeong:\t\t{jeongScore}\t{jeongGrade}");
+
+string GetStudentGrade(decimal studentScore)
+{
+  if (studentScore >= 90)
+  {
+    return "A";
+  }
+  else if (studentScore >= 80)
+  {
+    return "B";
+  }
+  else if (studentScore >= 70)
+  {
+    return "C";
+  }
+  else if (studentScore >= 60)
+  {
+    return "D";
+  }
+  else
+  {
+    return "F";
+  }
+}
