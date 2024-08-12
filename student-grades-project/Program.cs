@@ -57,24 +57,37 @@ Console.WriteLine($"Jeong:\t\t{jeongScore}\t{jeongGrade}");
 
 string GetStudentGrade(decimal studentScore)
 {
-  if (studentScore >= 90)
+  // if (studentScore >= 90)
+  // {
+  //   return "A";
+  // }
+  // else if (studentScore >= 80)
+  // {
+  //   return "B";
+  // }
+  // else if (studentScore >= 70)
+  // {
+  //   return "C";
+  // }
+  // else if (studentScore >= 60)
+  // {
+  //   return "D";
+  // }
+  // else
+  // {
+  //   return "F";
+  // }
+  switch (studentScore)
   {
-    return "A";
-  }
-  else if (studentScore >= 80)
-  {
-    return "B";
-  }
-  else if (studentScore >= 70)
-  {
-    return "C";
-  }
-  else if (studentScore >= 60)
-  {
-    return "D";
-  }
-  else
-  {
-    return "F";
+    case >= 90:
+      return "A";
+    case >= 80:
+      return "B";
+    case >= 70:
+      return "C";
+    case >= 60:
+      return "D";
+    default:
+      return "F";
   }
 }
