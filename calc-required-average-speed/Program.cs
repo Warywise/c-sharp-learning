@@ -3,11 +3,11 @@
 Console.WriteLine("Boas vindas ao programa 'Calcula Velocidade'!");
 Console.WriteLine("Primeiramente, qual o seu nome?");
 // Para strings não é necessário converter o tipo
-string name = Console.ReadLine();
-Console.WriteLine("Olá, " + name + "! Vamos calcular a velocidade média necessária para percorrer uma distância em um determinado tempo. Para isso, precisaremos de alguns dados.");
+string? name = Console.ReadLine();
+Console.WriteLine("\nOlá, " + name + "! Vamos calcular a velocidade média necessária para percorrer uma distância em um determinado tempo. Para isso, precisaremos de alguns dados.");
 
 Console.WriteLine("Para continuar, digite: OK");
-string userResponse= Console.ReadLine();
+string? userResponse= Console.ReadLine();
 
 if (userResponse != null && userResponse.ToUpper() != "OK")
 {
@@ -15,25 +15,41 @@ if (userResponse != null && userResponse.ToUpper() != "OK")
   return;
 }
 
-Console.WriteLine("Informe a distância a ser percorrida em quilômetros: ");
-decimal distance = decimal.Parse(Console.ReadLine());
+bool userInputIsValid;
+
+Console.WriteLine("\nInforme a distância a ser percorrida em quilômetros: ");
+decimal distance;
+userInputIsValid = decimal.TryParse(Console.ReadLine(), out distance);
+
+VerifyUserInputIsValid();
 
 // TODO: Verificar possibilidade de aguardar um tempo em segundos até próxima execução
 
-Console.WriteLine("Escolha a unidade de tempo para o cálculo da velocidade média:");
+Console.WriteLine("\nEscolha a unidade de tempo para o cálculo da velocidade média:");
 Console.WriteLine("Digite \" 1 \", para Minutos");
 Console.WriteLine("Digite \" 2 \", para Horas");
-int timeUnit = int.Parse(Console.ReadLine());
+int timeUnit;
+int triesNumber = 0;
 
-if (timeUnit != 1 && timeUnit != 2)
-{
-  // TODO: implementar lógica para repetir o fluxo de escolha da unidade de tempo
-  Console.WriteLine("Opção inválida. Encerrando o programa...");
-  return;
-}
+do {
+    _ = int.TryParse(Console.ReadLine(), out timeUnit);
 
-Console.WriteLine("Informe o tempo disponível para percorrer essa distância: ");
-decimal time = decimal.Parse(Console.ReadLine());
+  if (timeUnit != 1 && timeUnit != 2)
+  {
+    if (triesNumber > 2) {
+      Console.WriteLine("Número de tentativas excedido. Encerrando o programa...");
+      return;
+    }
+    triesNumber++;
+    Console.WriteLine("Opção inválida. Por favor, digite \" 1 \" para Minutos ou \" 2 \" para Horas");
+  }
+} while (timeUnit != 1 && timeUnit != 2);
+
+Console.WriteLine("\nInforme o tempo disponível para percorrer essa distância: ");
+// "time" pode ser declarado na mesma linha que a verificação do valor
+userInputIsValid = decimal.TryParse(Console.ReadLine(), out decimal time);
+
+VerifyUserInputIsValid();
 
 // TODO: Impementar lógica para perguntar se deseja utilizar minutos ou horas
 
@@ -41,7 +57,18 @@ decimal time = decimal.Parse(Console.ReadLine());
 decimal speed = distance / time;
 
 // SAÍDA DE DADOS
-Console.WriteLine("Aqui está sua estimativa " + name + ":");
+Console.WriteLine("\nAqui está sua estimativa " + name + ":");
 Console.WriteLine($"Para percorrer {distance} km em {time} {(timeUnit == 1 ? "minutos" : "horas")}, você precisará de uma velocidade média de {speed}km por {(timeUnit == 1 ? "minuto" : "hora")}");
 
 // TODO: implementar lógica para mostrar tambem a velocidade de m/km
+
+// encerra a aplicação se o input do usuário for inválido
+void VerifyUserInputIsValid()
+{
+  if (!userInputIsValid)
+  {
+    Console.WriteLine("Valor inválido. Encerrando o programa...");
+    // TODO: existe uma forma menos abrupta de fechar a aplicação?
+    Environment.Exit(0);
+  }
+}
