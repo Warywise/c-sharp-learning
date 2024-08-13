@@ -142,3 +142,31 @@ foreach (string orderID in orderIDs)
         Console.WriteLine($"Order ID: {orderID}");
     }
 }
+
+Console.WriteLine();
+int[] array = [1, 2, 3, 4, 5];
+
+PrintArray(array);
+Clear(array);
+PrintArray(array);
+
+// um parâmetro array é uma referência, então a matriz original pode ser alterada (de forma limitada)
+void PrintArray(int[] array) 
+{
+    foreach (int a in array) 
+    {
+        Console.Write($"{a} ");
+    }
+    Console.WriteLine();
+}
+
+void Clear(int[] array) 
+{
+    for (int i = 0; i < array.Length; i++) 
+    {
+      // é possível alterar o valor de um índice específico
+      // não é possível alterar o tamanho da matriz
+      // não é possível alterar a própria matriz diretamente
+        array[i] = 0;
+    }
+}
