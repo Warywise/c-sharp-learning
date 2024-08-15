@@ -85,80 +85,82 @@ foreach (string currentStudent in studentNames)
   {
     gradedAssignments += 1;
 
-    if (gradedAssignments <= examAssignments)
-      sumAssignmentScores += score;
-    else
-      sumAssignmentScores += score / 10;
+    //   if (gradedAssignments <= examAssignments)
+    //     sumAssignmentScores += score;
+    //   else
+    //     sumAssignmentScores += score / 10;
+    // }
+    sumAssignmentScores +=
+      (gradedAssignments <= examAssignments) ? score : (score / 10);
+
+    currentStudentGrade = (decimal)(sumAssignmentScores) / examAssignments;
+
+    // if (currentStudentGrade >= 97)
+    //   currentStudentLetterGrade = "A+";
+    // else if (currentStudentGrade >= 93)
+    //   currentStudentLetterGrade = "A";
+    // else if (currentStudentGrade >= 90)
+    //   currentStudentLetterGrade = "A-";
+    // else if (currentStudentGrade >= 87)
+    //   currentStudentLetterGrade = "B+";
+    // else if (currentStudentGrade >= 83)
+    //   currentStudentLetterGrade = "B";
+    // else if (currentStudentGrade >= 80)
+    //   currentStudentLetterGrade = "B-";
+    // else if (currentStudentGrade >= 77)
+    //   currentStudentLetterGrade = "C+";
+    // else if (currentStudentGrade >= 73)
+    //   currentStudentLetterGrade = "C";
+    // else if (currentStudentGrade >= 70)
+    //   currentStudentLetterGrade = "C-";
+    // else if (currentStudentGrade >= 67)
+    //   currentStudentLetterGrade = "D+";
+    // else if (currentStudentGrade >= 63)
+    //   currentStudentLetterGrade = "D";
+    // else if (currentStudentGrade >= 60)
+    //   currentStudentLetterGrade = "D-";
+    // else
+    //   currentStudentLetterGrade = "F";
+    currentStudentLetterGrade = GetStudentLetterGrade(currentStudentGrade);
+
+    // Student         Grade
+    // Sophia:         92.2    A-
+
+    Console.WriteLine($"{currentStudent}\t\t{currentStudentGrade}\t{currentStudentLetterGrade}");
   }
 
-  currentStudentGrade = (decimal)(sumAssignmentScores) / examAssignments;
+  Console.WriteLine("\n\rPress the Enter key to continue");
+  Console.ReadLine();
 
-  // if (currentStudentGrade >= 97)
-  //   currentStudentLetterGrade = "A+";
-  // else if (currentStudentGrade >= 93)
-  //   currentStudentLetterGrade = "A";
-  // else if (currentStudentGrade >= 90)
-  //   currentStudentLetterGrade = "A-";
-  // else if (currentStudentGrade >= 87)
-  //   currentStudentLetterGrade = "B+";
-  // else if (currentStudentGrade >= 83)
-  //   currentStudentLetterGrade = "B";
-  // else if (currentStudentGrade >= 80)
-  //   currentStudentLetterGrade = "B-";
-  // else if (currentStudentGrade >= 77)
-  //   currentStudentLetterGrade = "C+";
-  // else if (currentStudentGrade >= 73)
-  //   currentStudentLetterGrade = "C";
-  // else if (currentStudentGrade >= 70)
-  //   currentStudentLetterGrade = "C-";
-  // else if (currentStudentGrade >= 67)
-  //   currentStudentLetterGrade = "D+";
-  // else if (currentStudentGrade >= 63)
-  //   currentStudentLetterGrade = "D";
-  // else if (currentStudentGrade >= 60)
-  //   currentStudentLetterGrade = "D-";
-  // else
-  //   currentStudentLetterGrade = "F";
-  currentStudentLetterGrade = GetStudentLetterGrade(currentStudentGrade);
-
-  // Student         Grade
-  // Sophia:         92.2    A-
-
-  Console.WriteLine($"{currentStudent}\t\t{currentStudentGrade}\t{currentStudentLetterGrade}");
-}
-
-Console.WriteLine("\n\rPress the Enter key to continue");
-Console.ReadLine();
-
-string GetStudentLetterGrade(decimal studentGrade)
-{
-  switch (studentGrade)
+  string GetStudentLetterGrade(decimal studentGrade)
   {
-    case >= 97:
-      return "A+";
-    case >= 93:
-      return "A";
-    case >= 90:
-      return "A-";
-    case >= 87:
-      return "B+";
-    case >= 83:
-      return "B";
-    case >= 80:
-      return "B-";
-    case >= 77:
-      return "C+";
-    case >= 73:
-      return "C";
-    case >= 70:
-      return "C-";
-    case >= 67:
-      return "D+";
-    case >= 63:
-      return "D";
-    case >= 60:
-      return "D-";
-    default:
-      return "F";
+    switch (studentGrade)
+    {
+      case >= 97:
+        return "A+";
+      case >= 93:
+        return "A";
+      case >= 90:
+        return "A-";
+      case >= 87:
+        return "B+";
+      case >= 83:
+        return "B";
+      case >= 80:
+        return "B-";
+      case >= 77:
+        return "C+";
+      case >= 73:
+        return "C";
+      case >= 70:
+        return "C-";
+      case >= 67:
+        return "D+";
+      case >= 63:
+        return "D";
+      case >= 60:
+        return "D-";
+      default:
+        return "F";
+    }
   }
-}
