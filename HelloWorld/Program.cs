@@ -112,7 +112,7 @@ Console.WriteLine();
 int[] singleNumbers = [1, 2, 3, 4, 5];
 foreach (int singleNumber in singleNumbers)
 {
-  Console.WriteLine(singleNumber);
+    Console.WriteLine(singleNumber);
 }
 
 string[] cars = new string[3];
@@ -120,7 +120,7 @@ cars[0] = "Volvo";
 cars[2] = "BMW";
 foreach (string car in cars)
 {
-  Console.WriteLine(car);
+    Console.WriteLine(car);
 }
 
 int[] inventory = [200, 450, 700, 175, 250];
@@ -151,22 +151,30 @@ Clear(array);
 PrintArray(array);
 
 // um parâmetro array é uma referência, então a matriz original pode ser alterada (de forma limitada)
-void PrintArray(int[] array) 
+void PrintArray(int[] array)
 {
-    foreach (int a in array) 
+    foreach (int a in array)
     {
         Console.Write($"{a} ");
     }
     Console.WriteLine();
 }
 
-void Clear(int[] array) 
+void Clear(int[] array)
 {
-    for (int i = 0; i < array.Length; i++) 
+    for (int i = 0; i < array.Length; i++)
     {
-      // é possível alterar o valor de um índice específico
-      // não é possível alterar o tamanho da matriz
-      // não é possível alterar a própria matriz diretamente
+        // é possível alterar o valor de um índice específico
+        // não é possível alterar o tamanho da matriz
+        // não é possível alterar a própria matriz diretamente
         array[i] = 0;
     }
 }
+
+Random coin = new();
+int flip = coin.Next(0, 1);
+
+if (flip == 0)
+    Console.WriteLine("Heads" + flip);
+else
+    Console.WriteLine("Tails" + flip);
