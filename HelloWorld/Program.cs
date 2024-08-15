@@ -171,10 +171,28 @@ void Clear(int[] array)
     }
 }
 
+// Coin flip - 0 = heads, 1 = tails (maxValue não é incluído)
 Random coin = new();
-int flip = coin.Next(0, 1);
+int flip = coin.Next(0, 2);
 
 if (flip == 0)
     Console.WriteLine("Heads" + flip);
 else
     Console.WriteLine("Tails" + flip);
+
+Console.WriteLine();
+// FizzBuzz challenge
+for (int count = 1; count <= 100; count++)
+{
+    bool fizz = count % 3 == 0;
+    bool buzz = count % 5 == 0;
+
+    if (fizz && buzz)
+        Console.WriteLine($"{count} - FizzBuzz");
+    else if (fizz)
+        Console.WriteLine($"{count} - Fizz");
+    else if (buzz)
+        Console.WriteLine($"{count} - Buzz");
+    else
+        Console.WriteLine($"{count}");
+}
