@@ -9,7 +9,7 @@ Console.WriteLine("\nOlá, " + name + "! Vamos calcular a velocidade média nece
 Console.WriteLine("Para continuar, digite: OK");
 string? userResponse= Console.ReadLine();
 
-if (userResponse != null && userResponse.ToUpper() != "OK")
+if (userResponse != null && userResponse.Trim().ToUpper() != "OK")
 {
   Console.WriteLine("Encerrando o programa...");
   return;
