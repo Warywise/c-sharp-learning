@@ -196,3 +196,17 @@ for (int count = 1; count <= 100; count++)
     else
         Console.WriteLine($"{count}");
 }
+
+// Arrays multidimensionais
+int[,] matrix = new int[2, 3]; // 2 linhas, 3 colunas - { {0, 0, 0}, {0, 0, 0} }
+matrix[0, 0] = 1; // a primeira posição do primeiro array é 1 - { {1, 0, 0}, {0, 0, 0} }
+matrix[1, 2] = 5; // a terceira posição do segundo array é 5 - { {1, 0, 0}, {0, 0, 5} }
+
+// jagged array (matriz multidimensional irregular)
+int[][] jaggedArray = new int[3][]; // um array com 3 arrays de inteiros
+jaggedArray[0] = new int[2]; // primeiro array com 2 inteiros - { {0, 0}, null, null }
+jaggedArray[1] = new int[3]; // segundo array com 3 inteiros - { {0, 0}, {0, 0, 0}, null }
+jaggedArray[2] = new int[4]; // terceiro array com 4 inteiros - { {0, 0}, {0, 0, 0}, {0, 0, 0, 0} }
+
+// int [,,] threeD = new int[3, 2, 3]; // 3 arrays de 2 arrays de 3 inteiros
+// { { {0, 0, 0}, {0, 0, 0} }, { {0, 0, 0}, {0, 0, 0} }, { {0, 0, 0}, {0, 0, 0} } }
