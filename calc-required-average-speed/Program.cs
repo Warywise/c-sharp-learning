@@ -23,7 +23,7 @@ userInputIsValid = decimal.TryParse(Console.ReadLine(), out distance);
 
 VerifyUserInputIsValid();
 
-// TODO: Verificar possibilidade de aguardar um tempo em segundos até próxima execução
+Thread.Sleep(1000);
 
 Console.WriteLine("\nEscolha a unidade de tempo para o cálculo da velocidade média:");
 Console.WriteLine("Digite \" 1 \", para Minutos");
@@ -51,16 +51,16 @@ userInputIsValid = decimal.TryParse(Console.ReadLine(), out decimal time);
 
 VerifyUserInputIsValid();
 
-// TODO: Impementar lógica para perguntar se deseja utilizar minutos ou horas
+// TODO: Impementar lógica para utilizar minutos ou horas
 
 // PROCESSAMENTO
 decimal speed = distance / time;
+// spped com no máximo 3 casas decimais
+speed = Math.Round(speed, 3);
 
 // SAÍDA DE DADOS
 Console.WriteLine("\nAqui está sua estimativa " + name + ":");
-Console.WriteLine($"Para percorrer {distance} km em {time} {(timeUnit == 1 ? "minutos" : "horas")}, você precisará de uma velocidade média de {speed}km por {(timeUnit == 1 ? "minuto" : "hora")}");
-
-// TODO: implementar lógica para mostrar tambem a velocidade de m/km
+Console.WriteLine($"Para percorrer {distance} km em {time} {(timeUnit == 1 ? "minutos" : "horas")}, você precisará de uma velocidade média de {speed}km por {(timeUnit == 1 ? "minuto" : "hora")}. \nPara isso será necessário percorrer cada quilômetro em aproximadamente {time / distance} {(timeUnit == 1 ? "minutos" : "horas")}.");
 
 // encerra a aplicação se o input do usuário for inválido
 void VerifyUserInputIsValid()
