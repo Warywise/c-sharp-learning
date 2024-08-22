@@ -228,3 +228,13 @@ Console.WriteLine($"float  : {float.MinValue} to {float.MaxValue} (with ~6-9 dig
 Console.WriteLine($"double : {double.MinValue} to {double.MaxValue} (with ~15-17 digits of precision)");
 Console.WriteLine($"decimal: {decimal.MinValue} to {decimal.MaxValue} (with 28-29 digits of precision)");
 Console.WriteLine();
+
+// Coerçãpo de tipo X Conversão de tipo
+// Coerção de tipo é a conversão implícita de um tipo de dado para outro
+// Conversão de tipo é a conversão explícita de um tipo de dado para outro
+// Coerção de tipo é feita pelo compilador, enquanto a conversão de tipo é feita pelo programador
+// A coerção resulta em truncamentos e a conversão resulta em valores arredondados
+int truncInt = (int)3.9; // 3
+int convertInt = Convert.ToInt32(3.9); // 4
+int roundInt = (int)Math.Round(3.9); // 4
+Console.WriteLine($"Truncate: {truncInt}, Convert: {convertInt}, Round: {roundInt}");
