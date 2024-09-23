@@ -238,3 +238,62 @@ int truncInt = (int)3.9; // 3
 int convertInt = Convert.ToInt32(3.9); // 4
 int roundInt = (int)Math.Round(3.9); // 4
 Console.WriteLine($"Truncate: {truncInt}, Convert: {convertInt}, Round: {roundInt}");
+
+// Ordenação de matrizes
+// altera a matriz original
+string[] pallets = ["B14", "A11", "B12", "A13"];
+
+Console.WriteLine("Sorted...");
+Array.Sort(pallets);
+foreach (var pallet in pallets)
+{
+    Console.WriteLine($"-- {pallet}");
+}
+
+Console.WriteLine("");
+Console.WriteLine("Reversed...");
+Array.Reverse(pallets);
+foreach (var pallet in pallets)
+{
+    Console.WriteLine($"-- {pallet}");
+}
+
+// Clear() e Resize()
+// Clear() - limpa uma quantidade de elementos da matriz a partir de uma posição
+// Resize() - redimensiona a matriz para um novo tamanho
+// elementos limpos ou elementos novos (após um resize) são definidos como null
+Console.WriteLine("");
+Array.Clear(pallets, 0, 2);
+Console.WriteLine($"Clearing 2 ... count: {pallets.Length}");
+foreach (var pallet in pallets)
+{
+    Console.WriteLine($"-- {pallet}");
+}
+
+Console.WriteLine("");
+Array.Resize(ref pallets, 6);
+Console.WriteLine($"Resizing 6 ... count: {pallets.Length}");
+
+pallets[4] = "C01";
+pallets[5] = "C02";
+
+foreach (var pallet in pallets)
+{
+    Console.WriteLine($"-- {pallet}");
+}
+
+Console.WriteLine("");
+Array.Resize(ref pallets, 3);
+Console.WriteLine($"Resizing 3 ... count: {pallets.Length}");
+
+foreach (var pallet in pallets)
+{
+    Console.WriteLine($"-- {pallet}");
+}
+
+// Revertendo uma string
+string exampleString = "abc123";
+char[] valueArray = exampleString.ToCharArray();
+Array.Reverse(valueArray);
+string result = new string(valueArray);
+Console.WriteLine($"Reversed: {result} | Original: {exampleString}");
