@@ -55,10 +55,39 @@ switch (monsterName)
     break;
 }
 
+// TODO: implementar repetição para verificar se o jogador escolheu uma opção válida
+Console.WriteLine("O que você vai fazer? Escolha uma opção: \n(1 - Tentar fugir / 2 - Encarar a batalha!)");
+string chooseAction = Console.ReadLine();
+
+if (
+    chooseAction.Trim().ToLower() == "1"
+    || chooseAction.Trim().ToLower() == "fugir"
+    || chooseAction.Trim().ToLower() == "tentar fugir"
+  )
+{
+  int escapeTry = dice.Next(1, 21);
+
+  if (escapeTry > 10)
+  {
+    Console.WriteLine("Não é vergonha fugir...\n Ao menos você vive para lutar outro dia.");
+    Console.WriteLine("\n#FIM!#");
+    return;
+  }
+  else
+  {
+    Console.WriteLine($"Você não conseguiu escapar! O {monsterName} te alcançou, seu destino é lutar.");
+  }
+}
+else
+{
+  Console.WriteLine("Você decidiu que voltar atrás não é uma opção. Desistir jamais trará a glória!");
+}
+
 Console.WriteLine("Prepare-se para a batalha!\n");
 Thread.Sleep(5000);
 
 // TODO: Implementar lógica para "iniciativa" (quem tem mais chance de atacar primeiro)
+// Lembrete: iniciativa é influenciada pela tentativa de fugir.
 ActionOrder actionOrder = GetActionOrder(
   new Entity(player, heroHp, heroMaxDmg, dice.Next(1, 7)),
   new Entity(monsterName, monsterHp, monsterMaxDmg, dice.Next(1, 7))
@@ -81,8 +110,10 @@ do
   Console.WriteLine($"{firstEntity.Name} ataca e causa {firstDmg} de dano. {secondEntity.Name} agora tem {secondEntity.Hp} pontos de vida.");
 
   if (secondEntity.Hp <= 0)
+  {
     winner = firstEntity.Name;
     break;
+  }
 
   firstEntity.Hp -= secondDmg > firstEntity.Hp ? firstEntity.Hp : secondDmg;
 
@@ -91,12 +122,14 @@ do
   Thread.Sleep(3000);
 
   if (firstEntity.Hp <= 0)
+  {
     winner = secondEntity.Name;
     break;
+  }
 
 } while (firstEntity.Hp > 0 && secondEntity.Hp > 0);
 
-Console.WriteLine($"{firstEntity.Name} {(firstEntity.Hp > 0 ? "derrotou" : "foi derrotado por")} {secondEntity.Name}.");
+Console.WriteLine($"{firstEntity.Name} {(firstEntity.Hp > 0 ? "derrotou o" : "foi derrotado pelo")} {secondEntity.Name}.");
 
 if (monsterName == "Dragão" && winner == player)
   Console.WriteLine("Você é um verdadeiro herói! Sua lenda será contada e cantada por gerações.");
