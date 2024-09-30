@@ -295,5 +295,31 @@ foreach (var pallet in pallets)
 string exampleString = "abc123";
 char[] valueArray = exampleString.ToCharArray();
 Array.Reverse(valueArray);
-string result = new string(valueArray);
+string result = new(valueArray);
 Console.WriteLine($"Reversed: {result} | Original: {exampleString}");
+
+// formatação composta
+string first = "Hello";
+string second = "World";
+Console.WriteLine(string.Format("{0} {1}, {0}!", first, second));
+
+// formatação "Moeda", varia de acordo com a região da config do PC
+decimal price = 123.45m;
+int discount = 50;
+Console.WriteLine($"Price: {price:C} (Save {discount:C})");
+
+// formatar números
+decimal measurement = 123456.78912m;
+Console.WriteLine($"Measurement: {measurement:N} units");
+Console.WriteLine($"Measurement: {measurement:N4} units");
+
+// formatação de percentual
+decimal tax = .36785m;
+Console.WriteLine($"Tax rate: {tax:P}");
+Console.WriteLine($"Tax rate: {tax:P3}");
+
+// preencher cadeia de caracteres, segundo parâmetro opcional (se não, adiciona espaços em branco)
+string input = "pad-example"; // length == 11
+Console.WriteLine(input.PadLeft(12, '-')); // completa com 1 traço à esquerda
+ Console.WriteLine(input.PadRight(15, '-')); // completa com 4 tralos à direita
+
