@@ -323,3 +323,12 @@ string input = "pad-example"; // length == 11
 Console.WriteLine(input.PadLeft(12, '-')); // completa com 1 traço à esquerda
  Console.WriteLine(input.PadRight(15, '-')); // completa com 4 tralos à direita
 
+// Remove() e Replace()
+string data = "12345this text will be removed5000  3  ";
+string updatedData = data.Remove(5, 25);
+Console.WriteLine(updatedData);
+
+string message = "This--is--ex-amp-le--da-ta";
+message = message.Replace("--", " ");
+message = message.Replace("-", "");
+Console.WriteLine(message);
